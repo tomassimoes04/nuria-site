@@ -5,13 +5,17 @@ import tailwindcss from '@tailwindcss/vite';
 
 import vercel from '@astrojs/vercel';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://nuria-site.vercel.app',
   output: 'static',
 
   vite: {
     plugins: [tailwindcss()]
   },
 
-  adapter: vercel()
+  adapter: vercel(),
+  integrations: [sitemap()]
 });
