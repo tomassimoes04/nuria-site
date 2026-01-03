@@ -53,6 +53,15 @@
       "image": "/images/products/bag.jpg",
       "url": "https://example.com/product6",
       "category": "Acessórios"
+    },
+    {
+      "id": "11",
+      "name": "Produto teste",
+      "brand": "gang",
+      "price": "30",
+      "image": "/images/691889.jpg",
+      "url": "https://example.com/product3",
+      "category": "Acessórios"
     }
   ]
 }
