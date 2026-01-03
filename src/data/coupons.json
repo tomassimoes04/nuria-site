@@ -1,48 +1,48 @@
 {
   "coupons": [
     {
-      "id": "1",
+      "discount": "10% desconto",
       "brand": "Prozis",
-      "code": "NURIA10",
-      "discount": "10% desconto",
-      "description": "Válido em toda a loja",
       "logo": "/images/brands/prozis.png",
+      "code": "NURIA10",
+      "featured": true,
       "url": "https://www.prozis.com",
-      "category": "Saúde & Fitness",
-      "featured": true
+      "id": "1",
+      "description": "Válido em toda a loja",
+      "category": "Saúde & Fitness"
     },
     {
-      "id": "2",
-      "brand": "Women'Secret",
-      "code": "NURIA15",
       "discount": "15% desconto",
-      "description": "Em compras acima de 30€",
+      "brand": "Women'Secret",
       "logo": "/images/brands/womensecret.png",
+      "code": "NURIA15",
+      "featured": true,
       "url": "https://www.womensecret.com",
-      "category": "Moda",
-      "featured": true
+      "id": "2",
+      "description": "Em compras acima de 30€",
+      "category": "Moda"
     },
     {
-      "id": "3",
-      "brand": "Skin.pt",
-      "code": "NURIA20",
       "discount": "20% desconto",
-      "description": "Primeira compra",
+      "brand": "Skin.pt",
       "logo": "/images/brands/skin.png",
+      "code": "NURIA20",
+      "featured": false,
       "url": "https://www.skin.pt",
-      "category": "Beleza",
-      "featured": false
+      "id": "3",
+      "description": "Primeira compra",
+      "category": "Beleza"
     },
     {
+      "discount": "60% OFF apenas para novos usuários",
+      "brand": "SHEIN",
+      "logo": "/images/img_4775.gif",
+      "code": "EYDV4",
+      "featured": false,
+      "url": "https://onelink.shein.com/25/5c9cfvmeww20",
       "id": "4",
-      "brand": "Claro",
-      "code": "NURIA",
-      "discount": "10% desconto",
-      "description": "Produtos selecionados",
-      "logo": "/images/brands/claro.png",
-      "url": "https://www.claro.pt",
-      "category": "Casa",
-      "featured": false
+      "description": "Aceder ao link abaixou ou pesquisar o código na aplicação",
+      "category": "Moda"
     }
   ]
 }
