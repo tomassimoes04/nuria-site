@@ -1,0 +1,86 @@
+---
+interface Props {
+  activeTab?: string;
+}
+
+const { activeTab = 'sobre' } = Astro.props;
+
+const tabs = [
+  { id: 'sobre', label: 'Sobre', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' },
+  { id: 'descontos', label: 'Descontos', icon: 'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z' },
+  { id: 'achados', label: 'Achados', icon: 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z' },
+  { id: 'redes', label: 'Redes Sociais', icon: 'M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1' }
+];
+---
+
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="flex items-center justify-center gap-1 py-3 overflow-x-auto scrollbar-hide">
+      {tabs.map(tab => (
+        <button 
+          class={`tab-btn flex items-center gap-2 px-4 py-2.5 rounded-full font-medium text-sm transition-all duration-200 whitespace-nowrap ${
+            activeTab === tab.id 
+              ? 'bg-gray-900 text-white shadow-lg' 
+              : 'text-gray-600 hover:bg-gray-100'
+          }`}
+          data-tab={tab.id}
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={tab.icon} />
+          </svg>
+          <span class="hidden sm:inline">{tab.label}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const sections = document.querySelectorAll('.tab-section');
+
+  function switchTab(tabId: string) {
+    // Update buttons
+    tabButtons.forEach(btn => {
+      const isActive = btn.getAttribute('data-tab') === tabId;
+      btn.classList.toggle('bg-gray-900', isActive);
+      btn.classList.toggle('text-white', isActive);
+      btn.classList.toggle('shadow-lg', isActive);
+      btn.classList.toggle('text-gray-600', !isActive);
+      btn.classList.toggle('hover:bg-gray-100', !isActive);
+    });
+
+    // Update sections
+    sections.forEach(section => {
+      const sectionId = section.getAttribute('data-section');
+      if (sectionId === tabId) {
+        section.classList.remove('hidden');
+        section.classList.add('animate-fadeIn');
+      } else {
+        section.classList.add('hidden');
+        section.classList.remove('animate-fadeIn');
+      }
+    });
+
+    // Update URL hash without scrolling
+    history.replaceState(null, '', `#${tabId}`);
+  }
+
+  // Click handlers
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.getAttribute('data-tab');
+      if (tabId) switchTab(tabId);
+    });
+  });
+
+  // Handle initial hash
+  const initialTab = window.location.hash.slice(1) || 'sobre';
+  switchTab(initialTab);
+
+  // Handle hash changes
+  window.addEventListener('hashchange', () => {
+    const tabId = window.location.hash.slice(1) || 'sobre';
+    switchTab(tabId);
+  });
+</script>

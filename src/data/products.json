@@ -1,0 +1,58 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Sérum Vitamina C",
+      "brand": "The Ordinary",
+      "price": "12.90€",
+      "image": "/images/products/serum.jpg",
+      "url": "https://example.com/product1",
+      "category": "Skincare"
+    },
+    {
+      "id": "2",
+      "name": "Air Force 1",
+      "brand": "Nike",
+      "price": "119.99€",
+      "image": "/images/products/airforce.jpg",
+      "url": "https://example.com/product2",
+      "category": "Moda"
+    },
+    {
+      "id": "3",
+      "name": "Vela Aromática",
+      "brand": "Zara Home",
+      "price": "15.99€",
+      "image": "/images/products/candle.jpg",
+      "url": "https://example.com/product3",
+      "category": "Casa"
+    },
+    {
+      "id": "4",
+      "name": "Proteína Whey",
+      "brand": "Prozis",
+      "price": "29.99€",
+      "image": "/images/products/whey.jpg",
+      "url": "https://example.com/product4",
+      "category": "Fitness"
+    },
+    {
+      "id": "5",
+      "name": "Lip Oil",
+      "brand": "Kiko",
+      "price": "8.99€",
+      "image": "/images/products/lipoil.jpg",
+      "url": "https://example.com/product5",
+      "category": "Makeup"
+    },
+    {
+      "id": "6",
+      "name": "Bolsa Crossbody",
+      "brand": "Parfois",
+      "price": "25.99€",
+      "image": "/images/products/bag.jpg",
+      "url": "https://example.com/product6",
+      "category": "Acessórios"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "coupons": [
+    {
+      "id": "1",
+      "brand": "Prozis",
+      "code": "NURIA10",
+      "discount": "10% desconto",
+      "description": "Válido em toda a loja",
+      "logo": "/images/brands/prozis.png",
+      "url": "https://www.prozis.com",
+      "category": "Saúde & Fitness",
+      "featured": true
+    },
+    {
+      "id": "2",
+      "brand": "Women'Secret",
+      "code": "NURIA15",
+      "discount": "15% desconto",
+      "description": "Em compras acima de 30€",
+      "logo": "/images/brands/womensecret.png",
+      "url": "https://www.womensecret.com",
+      "category": "Moda",
+      "featured": true
+    },
+    {
+      "id": "3",
+      "brand": "Skin.pt",
+      "code": "NURIA20",
+      "discount": "20% desconto",
+      "description": "Primeira compra",
+      "logo": "/images/brands/skin.png",
+      "url": "https://www.skin.pt",
+      "category": "Beleza",
+      "featured": false
+    },
+    {
+      "id": "4",
+      "brand": "Claro",
+      "code": "NURIA",
+      "discount": "10% desconto",
+      "description": "Produtos selecionados",
+      "logo": "/images/brands/claro.png",
+      "url": "https://www.claro.pt",
+      "category": "Casa",
+      "featured": false
+    }
+  ]
+}

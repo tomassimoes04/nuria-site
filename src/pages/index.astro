@@ -1,11 +1,145 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Navigation from '../components/Navigation.astro';
+import CouponCard from '../components/CouponCard.astro';
+import ProductCard from '../components/ProductCard.astro';
+import SocialCard from '../components/SocialCard.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Import data from JSON files
+import profileData from '../data/profile.json';
+import couponsData from '../data/coupons.json';
+import productsData from '../data/products.json';
+import socialsData from '../data/socials.json';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title={`${profileData.name} | Content Creator`}>
+  <main class="max-w-4xl mx-auto pb-20">
+    <!-- Header with profile info -->
+    <Header 
+      name={profileData.name}
+      tagline={profileData.tagline}
+      bio={profileData.bio}
+      profileImage={profileData.profileImage}
+    />
+
+    <!-- Navigation tabs -->
+    <Navigation activeTab="sobre" />
+
+    <!-- Tab Sections -->
+    <div class="px-4 py-8">
+      
+      <!-- SOBRE Section -->
+      <section class="tab-section" data-section="sobre">
+        <div class="max-w-2xl mx-auto">
+          <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+              <div class="w-48 h-48 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                <img 
+                  src={profileData.profileImage} 
+                  alt={profileData.name}
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'; this.parentElement.classList.add('bg-gradient-to-br', 'from-rose-400', 'to-purple-500', 'flex', 'items-center', 'justify-center'); this.parentElement.innerHTML=`<span class='text-6xl text-white font-bold'>N</span>`"
+                />
+              </div>
+              <div class="text-center md:text-left">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Olá, sou a {profileData.name}! 👋</h2>
+                <p class="text-gray-600 leading-relaxed mb-6">{profileData.bio}</p>
+                <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                  <span class="bg-rose-100 text-rose-700 px-4 py-2 rounded-full text-sm font-medium">✨ Content Creator</span>
+                  <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium">🎬 TikToker</span>
+                  <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">💄 Lifestyle</span>
+                </div>
+              </div>
+            </div>
+            
+            <hr class="my-8 border-gray-100" />
+            
+            <div class="text-center">
+              <h3 class="text-lg font-semibold text-gray-900 mb-4">Parcerias & Contacto</h3>
+              <a 
+                href={`mailto:${profileData.email}`}
+                class="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white font-medium px-6 py-3 rounded-xl transition-colors"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                {profileData.email}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DESCONTOS Section -->
+      <section class="tab-section hidden" data-section="descontos">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">Descontos Exclusivos 🏷️</h2>
+          <p class="text-gray-600">Cupões especiais negociados para ti. Clica para copiar!</p>
+        </div>
+        
+        <!-- Featured coupons -->
+        {couponsData.coupons.filter(c => c.featured).length > 0 && (
+          <div class="mb-8">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Em Destaque</h3>
+            <div class="grid gap-4 sm:grid-cols-2">
+              {couponsData.coupons.filter(c => c.featured).map(coupon => (
+                <CouponCard {...coupon} />
+              ))}
+            </div>
+          </div>
+        )}
+        
+        <!-- All coupons -->
+        <div>
+          <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Todos os Cupões</h3>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {couponsData.coupons.filter(c => !c.featured).map(coupon => (
+              <CouponCard {...coupon} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- ACHADOS Section -->
+      <section class="tab-section hidden" data-section="achados">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">Os Meus Achados 🛍️</h2>
+          <p class="text-gray-600">Produtos que uso e recomendo. Links de afiliada.</p>
+        </div>
+        
+        <div class="grid gap-4 grid-cols-2 sm:grid-cols-3">
+          {productsData.products.map(product => (
+            <ProductCard {...product} />
+          ))}
+        </div>
+        
+        <div class="mt-8 p-4 bg-gray-50 rounded-2xl text-center">
+          <p class="text-sm text-gray-500">
+            💡 Alguns links são de afiliada. Se comprares através deles, ganho uma pequena comissão sem custo extra para ti!
+          </p>
+        </div>
+      </section>
+
+      <!-- REDES SOCIAIS Section -->
+      <section class="tab-section hidden" data-section="redes">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">Segue-me 📱</h2>
+          <p class="text-gray-600">Encontra-me em todas as plataformas!</p>
+        </div>
+        
+        <div class="grid gap-3 max-w-md mx-auto">
+          {socialsData.socials.map(social => (
+            <SocialCard {...social} />
+          ))}
+        </div>
+      </section>
+      
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="text-center py-8 text-sm text-gray-400">
+    <p>© {new Date().getFullYear()} {profileData.name}. Made with ❤️</p>
+  </footer>
+</BaseLayout>
