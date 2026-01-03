@@ -1,0 +1,64 @@
+{
+  "pokemon": [
+    {
+      "id": "1",
+      "name": "Charizard",
+      "set": "Base Set",
+      "number": "4/102",
+      "rarity": "Holo Rare",
+      "image": "/images/pokemon/charizard.jpg",
+      "status": "wishlist",
+      "notes": "Grail card! 🔥"
+    },
+    {
+      "id": "2",
+      "name": "Pikachu",
+      "set": "Celebrations",
+      "number": "025/025",
+      "rarity": "Holo Rare",
+      "image": "/images/pokemon/pikachu.jpg",
+      "status": "owned",
+      "notes": "25th Anniversary"
+    },
+    {
+      "id": "3",
+      "name": "Mewtwo",
+      "set": "Base Set",
+      "number": "10/102",
+      "rarity": "Holo Rare",
+      "image": "/images/pokemon/mewtwo.jpg",
+      "status": "wishlist",
+      "notes": ""
+    },
+    {
+      "id": "4",
+      "name": "Umbreon VMAX",
+      "set": "Evolving Skies",
+      "number": "215/203",
+      "rarity": "Secret Rare",
+      "image": "/images/pokemon/umbreon.jpg",
+      "status": "wishlist",
+      "notes": "Alt art 😍"
+    },
+    {
+      "id": "5",
+      "name": "Gengar",
+      "set": "Fossil",
+      "number": "5/62",
+      "rarity": "Holo Rare",
+      "image": "/images/pokemon/gengar.jpg",
+      "status": "owned",
+      "notes": "Primeira carta holo!"
+    },
+    {
+      "id": "6",
+      "name": "Rayquaza VMAX",
+      "set": "Evolving Skies",
+      "number": "218/203",
+      "rarity": "Secret Rare",
+      "image": "/images/pokemon/rayquaza.jpg",
+      "status": "wishlist",
+      "notes": "Alt art gold"
+    }
+  ]
+}

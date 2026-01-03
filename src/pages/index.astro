@@ -5,12 +5,14 @@ import Navigation from '../components/Navigation.astro';
 import CouponCard from '../components/CouponCard.astro';
 import ProductCard from '../components/ProductCard.astro';
 import SocialCard from '../components/SocialCard.astro';
+import PokemonCard from '../components/PokemonCard.astro';
 
 // Import data from JSON files
 import profileData from '../data/profile.json';
 import couponsData from '../data/coupons.json';
 import productsData from '../data/products.json';
 import socialsData from '../data/socials.json';
+import pokemonData from '../data/pokemon.json';
 ---
 
 <BaseLayout title={`${profileData.name} | Content Creator`}>
@@ -121,6 +123,35 @@ import socialsData from '../data/socials.json';
         </div>
       </section>
 
+      <!-- POKÉMON Section -->
+      <section class="tab-section hidden" data-section="pokemon">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">Coleção Pokémon 🎴</h2>
+          <p class="text-gray-600">As minhas cartas e wishlist!</p>
+        </div>
+        
+        <!-- Filter tabs -->
+        <div class="flex gap-2 mb-6">
+          <button class="pokemon-filter active bg-gray-900 text-white px-4 py-2 rounded-full text-sm font-medium transition-all" data-filter="all">Todas</button>
+          <button class="pokemon-filter bg-gray-100 text-gray-600 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-medium transition-all" data-filter="owned">✓ Tenho</button>
+          <button class="pokemon-filter bg-gray-100 text-gray-600 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-medium transition-all" data-filter="wishlist">♡ Quero</button>
+        </div>
+        
+        <div class="grid gap-4 grid-cols-2 sm:grid-cols-3" id="pokemon-grid">
+          {pokemonData.pokemon.map(card => (
+            <div class="pokemon-item" data-status={card.status}>
+              <PokemonCard {...card} />
+            </div>
+          ))}
+        </div>
+        
+        <div class="mt-8 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl text-center">
+          <p class="text-sm text-gray-600">
+            📊 Coleção: <strong>{pokemonData.pokemon.filter(p => p.status === 'owned').length}</strong> cartas | Wishlist: <strong>{pokemonData.pokemon.filter(p => p.status === 'wishlist').length}</strong> cartas
+          </p>
+        </div>
+      </section>
+
       <!-- REDES SOCIAIS Section -->
       <section class="tab-section hidden" data-section="redes">
         <div class="mb-8">
@@ -143,3 +174,33 @@ import socialsData from '../data/socials.json';
     <p>© {new Date().getFullYear()} {profileData.name}. Made with ❤️</p>
   </footer>
 </BaseLayout>
+
+<script>
+  // Pokemon filter functionality
+  const filterButtons = document.querySelectorAll('.pokemon-filter');
+  const pokemonItems = document.querySelectorAll('.pokemon-item');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      
+      // Update button styles
+      filterButtons.forEach(b => {
+        b.classList.remove('bg-gray-900', 'text-white', 'active');
+        b.classList.add('bg-gray-100', 'text-gray-600');
+      });
+      btn.classList.remove('bg-gray-100', 'text-gray-600');
+      btn.classList.add('bg-gray-900', 'text-white', 'active');
+      
+      // Filter items
+      pokemonItems.forEach(item => {
+        const status = item.getAttribute('data-status');
+        if (filter === 'all' || status === filter) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>

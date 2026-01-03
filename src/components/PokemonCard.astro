@@ -1,0 +1,64 @@
+---
+interface Props {
+  name: string;
+  set: string;
+  number: string;
+  rarity: string;
+  image: string;
+  status: 'owned' | 'wishlist';
+  notes?: string;
+}
+
+const { name, set, number, rarity, image, status, notes } = Astro.props;
+
+const statusStyles = {
+  owned: 'bg-green-100 text-green-700 border-green-200',
+  wishlist: 'bg-amber-100 text-amber-700 border-amber-200'
+};
+
+const statusLabels = {
+  owned: '✓ Tenho',
+  wishlist: '♡ Quero'
+};
+---
+
+<div class={`group relative bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:scale-[1.02] transition-all duration-300`}>
+  <!-- Status badge -->
+  <span class={`absolute top-3 right-3 z-10 text-xs font-medium px-2.5 py-1 rounded-full border ${statusStyles[status]}`}>
+    {statusLabels[status]}
+  </span>
+  
+  <!-- Card image -->
+  <div class="aspect-[3/4] bg-gradient-to-br from-indigo-100 to-purple-100 overflow-hidden relative">
+    <img 
+      src={image} 
+      alt={name}
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      loading="lazy"
+      onerror="this.style.display='none'; this.parentElement.classList.add('flex', 'items-center', 'justify-center'); this.parentElement.innerHTML=`<span class='text-5xl'>🎴</span>`"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+  </div>
+  
+  <!-- Card info -->
+  <div class="p-4">
+    <div class="flex items-start justify-between gap-2 mb-2">
+      <h3 class="font-bold text-gray-900 leading-tight">{name}</h3>
+      <span class="text-xs font-mono text-gray-400 shrink-0">{number}</span>
+    </div>
+    
+    <p class="text-sm text-gray-500 mb-2">{set}</p>
+    
+    <div class="flex items-center justify-between">
+      <span class="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded-full">
+        {rarity}
+      </span>
+    </div>
+    
+    {notes && (
+      <p class="mt-3 text-sm text-gray-600 italic border-t border-gray-100 pt-3">
+        "{notes}"
+      </p>
+    )}
+  </div>
+</div>
