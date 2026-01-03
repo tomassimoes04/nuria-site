@@ -1,47 +1,14 @@
 {
   "coupons": [
     {
-      "discount": "10% desconto",
-      "brand": "Prozis",
-      "logo": "/images/brands/prozis.png",
-      "code": "NURIA10",
-      "featured": true,
-      "url": "https://www.prozis.com",
-      "id": "1",
-      "description": "Válido em toda a loja",
-      "category": "Saúde & Fitness"
-    },
-    {
-      "discount": "15% desconto",
-      "brand": "Women'Secret",
-      "logo": "/images/brands/womensecret.png",
-      "code": "NURIA15",
-      "featured": true,
-      "url": "https://www.womensecret.com",
-      "id": "2",
-      "description": "Em compras acima de 30€",
-      "category": "Moda"
-    },
-    {
-      "discount": "20% desconto",
-      "brand": "Skin.pt",
-      "logo": "/images/brands/skin.png",
-      "code": "NURIA20",
-      "featured": false,
-      "url": "https://www.skin.pt",
-      "id": "3",
-      "description": "Primeira compra",
-      "category": "Beleza"
-    },
-    {
       "discount": "60% OFF apenas para novos usuários",
       "brand": "SHEIN",
       "logo": "/images/img_4775.gif",
       "code": "EYDV4",
       "featured": true,
       "url": "https://onelink.shein.com/25/5c9cfvmeww20",
-      "id": "4",
-      "description": "Aceder ao link abaixou ou pesquisar o código na aplicação",
+      "id": "1",
+      "description": "Aceder ao link abaixo ou pesquisar o código na aplicação.",
       "category": "Moda"
     }
   ]
