@@ -6,11 +6,12 @@ const REDIRECT_URI = 'https://nuria-site.vercel.app/api/callback';
 export const prerender = false;
 
 export const GET: APIRoute = async () => {
-  const authUrl = new URL('https://github.com/login/oauth/authorize');
-  authUrl.searchParams.set('client_id', CLIENT_ID);
-  authUrl.searchParams.set('redirect_uri', REDIRECT_URI);
-  authUrl.searchParams.set('scope', 'repo user');
-  authUrl.searchParams.set('state', crypto.randomUUID());
+  const authUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=repo,user`;
 
-  return Response.redirect(authUrl.toString(), 302);
+  return new Response(null, {
+    status: 302,
+    headers: {
+      'Location': authUrl
+    }
+  });
 };
