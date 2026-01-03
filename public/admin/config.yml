@@ -1,0 +1,106 @@
+backend:
+  name: github
+  repo: tomassimoes04/nuria-site
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+locale: 'pt'
+
+collections:
+  # Profile
+  - name: "profile"
+    label: "👤 Perfil"
+    files:
+      - name: "profile"
+        label: "Dados do Perfil"
+        file: "src/data/profile.json"
+        fields:
+          - { label: "Nome", name: "name", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Foto de Perfil", name: "profileImage", widget: "image" }
+          - { label: "Email", name: "email", widget: "string" }
+
+  # Coupons
+  - name: "coupons"
+    label: "🏷️ Cupões"
+    files:
+      - name: "coupons"
+        label: "Lista de Cupões"
+        file: "src/data/coupons.json"
+        fields:
+          - name: "coupons"
+            label: "Cupões"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Marca", name: "brand", widget: "string" }
+              - { label: "Código", name: "code", widget: "string" }
+              - { label: "Desconto", name: "discount", widget: "string", hint: "Ex: 10% desconto" }
+              - { label: "Descrição", name: "description", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image", required: false }
+              - { label: "URL da Loja", name: "url", widget: "string" }
+              - { label: "Categoria", name: "category", widget: "select", options: ["Moda", "Beleza", "Saúde & Fitness", "Casa", "Tech", "Outros"] }
+              - { label: "Destaque?", name: "featured", widget: "boolean", default: false }
+
+  # Products
+  - name: "products"
+    label: "🛍️ Achados"
+    files:
+      - name: "products"
+        label: "Lista de Produtos"
+        file: "src/data/products.json"
+        fields:
+          - name: "products"
+            label: "Produtos"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Marca", name: "brand", widget: "string" }
+              - { label: "Preço", name: "price", widget: "string", hint: "Ex: 29.99€" }
+              - { label: "Imagem", name: "image", widget: "image", required: false }
+              - { label: "URL (Link Afiliado)", name: "url", widget: "string" }
+              - { label: "Categoria", name: "category", widget: "select", options: ["Skincare", "Makeup", "Moda", "Acessórios", "Casa", "Fitness", "Tech", "Outros"] }
+
+  # Pokemon
+  - name: "pokemon"
+    label: "🎴 Pokémon"
+    files:
+      - name: "pokemon"
+        label: "Coleção Pokémon"
+        file: "src/data/pokemon.json"
+        fields:
+          - name: "pokemon"
+            label: "Cartas"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Set/Coleção", name: "set", widget: "string" }
+              - { label: "Número", name: "number", widget: "string", hint: "Ex: 4/102" }
+              - { label: "Raridade", name: "rarity", widget: "select", options: ["Common", "Uncommon", "Rare", "Holo Rare", "Ultra Rare", "Secret Rare", "Full Art", "Alt Art"] }
+              - { label: "Imagem", name: "image", widget: "image", required: false }
+              - { label: "Status", name: "status", widget: "select", options: [{ label: "✓ Tenho", value: "owned" }, { label: "♡ Quero", value: "wishlist" }] }
+              - { label: "Notas", name: "notes", widget: "string", required: false }
+
+  # Social Links
+  - name: "socials"
+    label: "📱 Redes Sociais"
+    files:
+      - name: "socials"
+        label: "Links das Redes"
+        file: "src/data/socials.json"
+        fields:
+          - name: "socials"
+            label: "Redes Sociais"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Plataforma", name: "platform", widget: "select", options: ["TikTok", "Instagram", "YouTube", "Pinterest", "Twitter", "Facebook", "LinkedIn"] }
+              - { label: "Username", name: "username", widget: "string", hint: "Ex: @nuria" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Ícone", name: "icon", widget: "select", options: ["tiktok", "instagram", "youtube", "pinterest", "twitter", "facebook", "linkedin"] }
+              - { label: "Seguidores", name: "followers", widget: "string", hint: "Ex: 50K" }
