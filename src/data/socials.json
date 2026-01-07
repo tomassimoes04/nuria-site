@@ -7,30 +7,6 @@
       "url": "https://www.tiktok.com/@nuria._.28",
       "icon": "tiktok",
       "followers": "500"
-    },
-    {
-      "id": "2",
-      "platform": "Instagram",
-      "username": "@nuria",
-      "url": "https://www.instagram.com/nuria",
-      "icon": "instagram",
-      "followers": "25K"
-    },
-    {
-      "id": "3",
-      "platform": "YouTube",
-      "username": "Núria",
-      "url": "https://www.youtube.com/@nuria",
-      "icon": "youtube",
-      "followers": "10K"
-    },
-    {
-      "id": "4",
-      "platform": "Pinterest",
-      "username": "nuria",
-      "url": "https://www.pinterest.pt/nuria",
-      "icon": "pinterest",
-      "followers": "5K"
     }
   ]
 }
