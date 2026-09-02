@@ -529,7 +529,8 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
           package: pkg,
           timeline: when,
           proposal: [...tray].join(', '),
-          subject: `${S.subject}${val('brand') ? ' — ' + val('brand') : ''}`
+          // Formspree uses _subject for the notification subject line
+          _subject: `${S.subject}${val('brand') ? ' — ' + val('brand') : ''}`
         })
       });
       if (!res.ok) throw new Error(String(res.status));
