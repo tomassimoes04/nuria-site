@@ -1,5 +1,10 @@
 {
-  "clients": [],
+  "clients": [
+    "SHEIN",
+    "L'Oréal",
+    "YesStyle",
+    "Firmoo"
+  ],
   "heading": "how working with me goes",
   "steps": [
     {
