@@ -1,0 +1,187 @@
+:root {
+  --paper: #fdf4f2;
+  --ink: #4a3340;
+  --rose: #e0708f;
+  --blush: #f8ccd7;
+  --lilac: #c8b4e8;
+  --mint: #a9dcc7;
+  --butter: #f8dfa0;
+  --card: #fffaf9;
+  --grid: rgba(74, 51, 64, .13);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Quicksand', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--rose); text-decoration: none; }
+a:hover { color: var(--ink); }
+input, button { font: inherit; color: inherit; }
+
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes sway { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+@keyframes blink { 0%, 100% { opacity: .4; } 50% { opacity: 1; } }
+
+/* dotted paper grid */
+.paper-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(var(--grid) 1.3px, transparent 1.4px);
+  background-size: 26px 26px;
+}
+
+/* ---- reel cards ---- */
+.reel-card {
+  position: relative;
+  flex: none;
+  width: 226px;
+  padding: 12px 12px 46px;
+  background: var(--card);
+  border-radius: 8px;
+  box-shadow: 0 20px 38px -20px rgba(74, 51, 64, .42);
+  cursor: pointer;
+  opacity: 0;
+  transition: box-shadow .3s ease;
+}
+.reel-card:hover { box-shadow: 0 26px 46px -18px rgba(74, 51, 64, .5); }
+.reel-card--hero {
+  z-index: 3;
+  opacity: 1;
+  box-shadow: 0 26px 46px -20px rgba(224, 112, 143, .55);
+}
+.reel-card--hero:hover { box-shadow: 0 30px 54px -18px rgba(224, 112, 143, .65); }
+.reel-card:focus-visible { outline: 3px solid var(--rose); outline-offset: 4px; }
+
+/* ---- rate tiers ---- */
+.tier-btn {
+  margin-top: auto;
+  padding: 14px;
+  border-radius: 99px;
+  border: 1.5px solid var(--tier-border, var(--blush));
+  background: transparent;
+  cursor: pointer;
+  font: 500 13px/1 'Quicksand', sans-serif;
+  transition: background .25s ease, filter .25s ease;
+}
+.tier-btn:hover { background: var(--tier-border, var(--blush)); }
+.tier-btn--solid {
+  border: none;
+  background: var(--ink);
+  color: var(--card);
+}
+.tier-btn--solid:hover { background: var(--ink); filter: brightness(1.25); }
+
+/* ---- overlay ---- */
+.ov-close {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 99px;
+  border: 1.5px solid rgba(74, 51, 64, .2);
+  background: transparent;
+  cursor: pointer;
+  font: 500 14px/1 'Quicksand', sans-serif;
+  transition: background .25s ease;
+}
+.ov-close:hover { background: var(--blush); }
+
+.ov-add {
+  padding: 15px 22px;
+  border-radius: 99px;
+  border: none;
+  background: var(--rose);
+  color: var(--card);
+  cursor: pointer;
+  font: 600 20px/1 'Caveat', cursive;
+  transition: filter .25s ease;
+}
+.ov-add:hover { filter: brightness(1.06); }
+
+/* ---- contact ---- */
+.send-btn {
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 15px 26px;
+  border-radius: 99px;
+  border: none;
+  background: var(--blush);
+  color: var(--ink);
+  cursor: pointer;
+  font: 600 22px/1 'Caveat', cursive;
+  transition: filter .25s ease;
+}
+.send-btn:hover { filter: brightness(1.05); }
+
+.pill {
+  padding: 11px 17px;
+  border-radius: 99px;
+  border: 1.5px solid rgba(253, 244, 242, .35);
+  background: transparent;
+  cursor: pointer;
+  font: 500 13px/1 'Quicksand', sans-serif;
+  transition: background .22s ease, color .22s ease, border-color .22s ease;
+}
+.pill[aria-pressed="true"] {
+  background: var(--blush);
+  color: var(--ink);
+  border-color: var(--blush);
+}
+
+.field {
+  width: 100%;
+  padding: 12px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px dotted rgba(253, 244, 242, .4);
+  outline: none;
+  font: 500 16px/1 'Quicksand', sans-serif;
+  color: inherit;
+}
+.field::placeholder { color: rgba(253, 244, 242, .55); }
+
+/* ---- mobile ---- *
+   The prototype was authored desktop-first: the pinned filmstrip and the
+   two-column rate-card overlay both need reflowing on narrow screens. */
+@media (max-width: 760px) {
+  .intro-text { left: 6vw !important; max-width: 88vw !important; }
+  .intro-photo { right: 5vw !important; top: 6vh !important; }
+  .intro-photo .polaroid { width: 132px !important; padding: 8px 8px 34px !important; }
+  .intro-photo .polaroid-caption { font-size: 17px !important; left: 10px !important; bottom: 9px !important; }
+  .intro-sticker { display: none !important; }
+  .strip-meta { bottom: 84px !important; }
+  .ov-grid {
+    grid-template-columns: 1fr !important;
+    align-content: center;
+    justify-items: center;
+    gap: 18px !important;
+    padding: 4vh 5vw 80px !important;
+    overflow-y: auto;
+  }
+  .ov-video { justify-self: center !important; width: min(190px, 62vw) !important; }
+  .ov-card { justify-self: center !important; width: min(420px, 90vw) !important; padding: 22px !important; }
+}
+
+@media (max-width: 420px) {
+  .ov-video { width: min(150px, 52vw) !important; }
+  .ov-card { padding: 18px !important; }
+}
+
+/* ---- reduced motion ---- *
+   Scroll-driven transforms are computed in JS and gated there too; this
+   removes the purely decorative loops. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}

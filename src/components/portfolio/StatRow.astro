@@ -1,0 +1,43 @@
+---
+interface Props {
+  stats?: {
+    heading?: string;
+    note?: string;
+    items?: { label: string; value: string; accent: string }[];
+  };
+}
+
+const { stats } = Astro.props;
+const accents: Record<string, string> = {
+  blush: 'var(--blush)',
+  mint: 'var(--mint)',
+  lilac: 'var(--lilac)',
+  butter: 'var(--butter)',
+  rose: 'var(--rose)'
+};
+
+// Only tiles she has actually filled in from her TikTok analytics; if none are
+// filled the whole section stays out of the page rather than shipping empties.
+const filled = (stats?.items ?? []).filter((s) => s.value?.trim());
+---
+
+{filled.length > 0 && (
+  <section style="position:relative;z-index:2;padding:0 6vw 30px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+      <div style="display:inline-block;padding:8px 20px;border-radius:99px;background:var(--mint);transform:rotate(-1deg);font:italic 400 clamp(26px,3.2vw,44px)/1.1 'DM Serif Display',serif">{stats?.heading ?? 'the numbers'}</div>
+      {stats?.note && (
+        <span style="font:500 12px/1.6 'Quicksand',sans-serif;color:rgba(74,51,64,.55)">{stats.note}</span>
+      )}
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;margin-top:30px">
+      {filled.map((s) => (
+        <div style="display:flex;flex-direction:column;gap:9px;padding:24px;border-radius:20px;background:#fffaf9;box-shadow:0 20px 40px -26px rgba(74,51,64,.42)">
+          <span style={`width:10px;height:10px;border-radius:99px;background:${accents[s.accent] ?? 'var(--blush)'}`}></span>
+          <div style="font:italic 400 clamp(30px,3.4vw,42px)/1 'DM Serif Display',serif;color:var(--ink)">{s.value}</div>
+          <div style="font:500 12px/1.5 'Quicksand',sans-serif;color:rgba(74,51,64,.62)">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+)}

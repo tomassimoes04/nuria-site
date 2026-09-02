@@ -1,0 +1,35 @@
+{
+  "clients": [
+    "SHEIN",
+    "L'Oréal",
+    "YesStyle",
+    "Firmoo"
+  ],
+  "heading": "how working with me goes",
+  "steps": [
+    {
+      "title": "you send the brief",
+      "body": "Product, audience, the offer. I come back with hook angles before anything gets filmed.",
+      "kicker": "no guessing ♡",
+      "background": "#fffaf9",
+      "badge": "var(--blush)",
+      "dir": -1
+    },
+    {
+      "title": "I shoot & edit",
+      "body": "Filmed at home or on location, soft natural light, my own gear. Captions and sound included.",
+      "kicker": "all done for you",
+      "background": "var(--lilac)",
+      "badge": "#fffaf9",
+      "dir": 1
+    },
+    {
+      "title": "you get the files",
+      "body": "Ready-to-post verticals plus raw b-roll, one revision round, delivered in under a week.",
+      "kicker": "post it →",
+      "background": "#fffaf9",
+      "badge": "var(--mint)",
+      "dir": -1
+    }
+  ]
+}
