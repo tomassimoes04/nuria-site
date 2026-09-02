@@ -8,22 +8,9 @@
       "length": "0:22",
       "video": "",
       "poster": "",
-      "offsetY": -40,
+      "offsetY": -34,
       "gradientFrom": "var(--blush)",
       "gradientTo": "#fbe6ec",
-      "hero": false
-    },
-    {
-      "title": "Direct-response hook",
-      "subtitle": "3-second stop scroll",
-      "price": "€180",
-      "package": "Sponsored TikTok Video",
-      "length": "0:18",
-      "video": "",
-      "poster": "",
-      "offsetY": 30,
-      "gradientFrom": "var(--lilac)",
-      "gradientTo": "#efe7fb",
       "hero": false
     },
     {
@@ -48,29 +35,28 @@
       "length": "0:31",
       "video": "",
       "poster": "",
-      "offsetY": 42,
+      "offsetY": 36,
       "gradientFrom": "var(--mint)",
       "gradientTo": "#e4f4ec",
-      "hero": false
-    },
-    {
-      "title": "Trend remix hook",
-      "subtitle": "fast, funny, sweet",
-      "price": "€250",
-      "package": "UGC Bundle",
-      "length": "0:15",
-      "video": "",
-      "poster": "",
-      "offsetY": -26,
-      "gradientFrom": "#f9d9e8",
-      "gradientTo": "var(--lilac)",
       "hero": false
     }
   ],
   "terms": [
-    { "label": "hook variations", "value": "2 included" },
-    { "label": "usage rights", "value": "organic, add paid on request" },
-    { "label": "delivery", "value": "5 business days" },
-    { "label": "revisions", "value": "1 round" }
+    {
+      "label": "hook variations",
+      "value": "2 included"
+    },
+    {
+      "label": "usage rights",
+      "value": "organic, add paid on request"
+    },
+    {
+      "label": "delivery",
+      "value": "5 business days"
+    },
+    {
+      "label": "revisions",
+      "value": "1 round"
+    }
   ]
 }

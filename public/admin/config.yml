@@ -11,7 +11,8 @@ public_folder: "/images"
 locale: 'pt'
 
 collections:
-  # Perfil / intro
+  # ---- Link-in-bio (nuria-site.vercel.app) ----
+  # Profile
   - name: "profile"
     label: "👤 Perfil"
     files:
@@ -19,15 +20,113 @@ collections:
         label: "Dados do Perfil"
         file: "src/data/profile.json"
         fields:
+          - { label: "Nome", name: "name", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Foto de Perfil", name: "profileImage", widget: "image" }
+          - { label: "Email", name: "email", widget: "string" }
+
+  # Coupons
+  - name: "coupons"
+    label: "🏷️ Cupões"
+    files:
+      - name: "coupons"
+        label: "Lista de Cupões"
+        file: "src/data/coupons.json"
+        fields:
+          - name: "coupons"
+            label: "Cupões"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Marca", name: "brand", widget: "string" }
+              - { label: "Código", name: "code", widget: "string" }
+              - { label: "Desconto", name: "discount", widget: "string", hint: "Ex: 10% desconto" }
+              - { label: "Descrição", name: "description", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image", required: false }
+              - { label: "URL da Loja", name: "url", widget: "string" }
+              - { label: "Categoria", name: "category", widget: "select", options: ["Moda", "Beleza", "Saúde & Fitness", "Casa", "Tech", "Outros"] }
+              - { label: "Destaque?", name: "featured", widget: "boolean", default: false }
+
+  # Products
+  - name: "products"
+    label: "🛍️ Achados"
+    files:
+      - name: "products"
+        label: "Lista de Produtos"
+        file: "src/data/products.json"
+        fields:
+          - name: "products"
+            label: "Produtos"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Marca", name: "brand", widget: "string" }
+              - { label: "Preço", name: "price", widget: "string", hint: "Ex: 29.99€" }
+              - { label: "Imagem", name: "image", widget: "image", required: false }
+              - { label: "URL (Link Afiliado)", name: "url", widget: "string" }
+              - { label: "Categoria", name: "category", widget: "select", options: ["Skincare", "Makeup", "Moda", "Acessórios", "Casa", "Fitness", "Tech", "Outros"] }
+
+  # Pokemon
+  - name: "pokemon"
+    label: "🎴 Pokémon"
+    files:
+      - name: "pokemon"
+        label: "Coleção Pokémon"
+        file: "src/data/pokemon.json"
+        fields:
+          - name: "pokemon"
+            label: "Cartas"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Set/Coleção", name: "set", widget: "string" }
+              - { label: "Número", name: "number", widget: "string", hint: "Ex: 4/102" }
+              - { label: "Raridade", name: "rarity", widget: "select", options: ["Common", "Uncommon", "Rare", "Holo Rare", "Ultra Rare", "Secret Rare", "Full Art", "Alt Art"] }
+              - { label: "Imagem", name: "image", widget: "image", required: false }
+              - { label: "Status", name: "status", widget: "select", options: [{ label: "✓ Tenho", value: "owned" }, { label: "♡ Quero", value: "wishlist" }] }
+              - { label: "Notas", name: "notes", widget: "string", required: false }
+
+  # Social Links
+  - name: "socials"
+    label: "📱 Redes Sociais"
+    files:
+      - name: "socials"
+        label: "Links das Redes"
+        file: "src/data/socials.json"
+        fields:
+          - name: "socials"
+            label: "Redes Sociais"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Plataforma", name: "platform", widget: "select", options: ["TikTok", "Instagram", "YouTube", "Pinterest", "Twitter", "Facebook", "LinkedIn"] }
+              - { label: "Username", name: "username", widget: "string", hint: "Ex: @nuria" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Ícone", name: "icon", widget: "select", options: ["tiktok", "instagram", "youtube", "pinterest", "twitter", "facebook", "linkedin"] }
+              - { label: "Seguidores", name: "followers", widget: "string", hint: "Ex: 50K" }
+
+  # ---- Media kit (/work-with-me) ----
+
+  # Perfil do media kit
+  - name: "kit"
+    label: "💼 Media kit — perfil"
+    files:
+      - name: "kit"
+        label: "Intro do media kit"
+        file: "src/data/kit.json"
+        fields:
           - { label: "Nome próprio", name: "name", widget: "string" }
           - { label: "Apelido", name: "surname", widget: "string" }
           - { label: "Saudação", name: "greeting", widget: "string" }
           - { label: "Tagline", name: "tagline", widget: "string" }
-          - { label: "Bio (parágrafo do intro)", name: "bio", widget: "text" }
-          - { label: "Foto de Perfil", name: "profileImage", widget: "image" }
+          - { label: "Bio (inglês, para marcas)", name: "bio", widget: "text" }
+          - { label: "Foto", name: "profileImage", widget: "image" }
           - { label: "Legenda da polaroid", name: "photoCaption", widget: "string" }
           - { label: "Email", name: "email", widget: "string" }
-          - { label: "Disponibilidade (barra inferior)", name: "availability", widget: "string" }
+          - { label: "Disponibilidade", name: "availability", widget: "string" }
           - { label: "Texto do autocolante", name: "stickerText", widget: "text" }
           - label: "Etiquetas"
             name: "skills"
@@ -35,6 +134,19 @@ collections:
             fields:
               - { label: "Texto", name: "label", widget: "string" }
               - { label: "Cor", name: "color", widget: "select", options: ["blush", "mint", "lilac", "butter"] }
+          - label: "Números do TikTok (deixa os valores vazios para esconder a secção)"
+            name: "stats"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "heading", widget: "string" }
+              - { label: "Nota (ex: actualizado em Setembro 2026)", name: "note", widget: "string", required: false }
+              - label: "Métricas"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Etiqueta", name: "label", widget: "string" }
+                  - { label: "Valor (vazio = escondido)", name: "value", widget: "string", required: false }
+                  - { label: "Cor", name: "accent", widget: "select", options: ["blush", "mint", "lilac", "butter", "rose"] }
           - { label: "URL TikTok", name: "tiktok", widget: "string" }
           - { label: "Username TikTok", name: "tiktokHandle", widget: "string" }
           - { label: "URL Instagram", name: "instagram", widget: "string" }
@@ -42,7 +154,7 @@ collections:
 
   # Reels
   - name: "reels"
-    label: "🎬 Reels"
+    label: "🎬 Media kit — reels"
     files:
       - name: "reels"
         label: "Reels e cartão de preços"
@@ -62,7 +174,7 @@ collections:
               - { label: "Deslocamento vertical", name: "offsetY", widget: "number", value_type: "int" }
               - { label: "Gradiente — início", name: "gradientFrom", widget: "string" }
               - { label: "Gradiente — fim", name: "gradientTo", widget: "string" }
-              - { label: "Card em destaque", name: "hero", widget: "boolean", default: false }
+              - { label: "Card em destaque (só um)", name: "hero", widget: "boolean", default: false }
               - { label: "Selo", name: "badge", widget: "string", required: false }
           - label: "Condições (cartão de preços)"
             name: "terms"
@@ -73,7 +185,7 @@ collections:
 
   # Preços
   - name: "rates"
-    label: "💶 Preços"
+    label: "💶 Media kit — preços"
     files:
       - name: "rates"
         label: "Tabela de preços"
@@ -95,13 +207,13 @@ collections:
 
   # Processo
   - name: "process"
-    label: "✨ Como funciona"
+    label: "✨ Media kit — como funciona"
     files:
       - name: "process"
         label: "Processo e clientes"
         file: "src/data/process.json"
         fields:
-          - label: "Clientes (deixa vazio para esconder a faixa)"
+          - label: "Clientes (vazio esconde a faixa)"
             name: "clients"
             widget: "list"
             required: false
@@ -120,7 +232,7 @@ collections:
 
   # Contacto
   - name: "contact"
-    label: "💌 Contacto"
+    label: "💌 Media kit — contacto"
     files:
       - name: "contact"
         label: "Secção de contacto"

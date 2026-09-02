@@ -1,0 +1,98 @@
+---
+interface Props {
+  brand: string;
+  code: string;
+  discount: string;
+  description: string;
+  logo: string;
+  url: string;
+  category: string;
+  featured?: boolean;
+}
+
+const { brand, code, discount, description, logo, url, category, featured } = Astro.props;
+---
+
+<div class={`group relative bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-200 transition-all duration-300 ${featured ? 'ring-2 ring-rose-100' : ''}`}>
+  {featured && (
+    <span class="absolute -top-2 -right-2 bg-rose-500 text-white text-xs font-medium px-2 py-1 rounded-full">
+      ⭐ Destaque
+    </span>
+  )}
+  
+  <div class="flex items-start justify-between mb-4">
+    <div class="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center overflow-hidden">
+      <img 
+        src={logo} 
+        alt={brand} 
+        class="w-12 h-12 object-contain"
+        onerror="this.style.display='none'; this.parentElement.innerHTML=`<span class='text-2xl font-bold text-gray-400'>${this.alt.charAt(0)}</span>`"
+      />
+    </div>
+    <span class="text-xs font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded-full">
+      {category}
+    </span>
+  </div>
+
+  <h3 class="font-semibold text-gray-900 text-lg mb-1">{brand}</h3>
+  <p class="text-rose-600 font-bold text-xl mb-2">{discount}</p>
+  <p class="text-gray-500 text-sm mb-4">{description}</p>
+
+  <div class="flex items-center gap-2">
+    <button 
+      class="coupon-copy-btn flex-1 bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2"
+      data-code={code}
+    >
+      <span class="coupon-code font-mono">{code}</span>
+      <svg class="w-4 h-4 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+      </svg>
+      <svg class="w-4 h-4 check-icon hidden text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+    </button>
+    
+    <a 
+      href={url} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="bg-rose-500 hover:bg-rose-600 text-white p-3 rounded-xl transition-colors duration-200"
+      aria-label={`Visitar ${brand}`}
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    </a>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.coupon-copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const code = btn.getAttribute('data-code');
+      if (!code) return;
+
+      try {
+        await navigator.clipboard.writeText(code);
+        
+        const copyIcon = btn.querySelector('.copy-icon') as HTMLElement;
+        const checkIcon = btn.querySelector('.check-icon') as HTMLElement;
+        const codeSpan = btn.querySelector('.coupon-code') as HTMLElement;
+        
+        if (copyIcon && checkIcon && codeSpan) {
+          copyIcon.classList.add('hidden');
+          checkIcon.classList.remove('hidden');
+          codeSpan.textContent = 'Copiado!';
+          
+          setTimeout(() => {
+            copyIcon.classList.remove('hidden');
+            checkIcon.classList.add('hidden');
+            codeSpan.textContent = code;
+          }, 2000);
+        }
+      } catch (err) {
+        console.error('Erro ao copiar:', err);
+      }
+    });
+  });
+</script>

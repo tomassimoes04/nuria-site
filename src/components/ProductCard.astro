@@ -1,0 +1,46 @@
+---
+interface Props {
+  name: string;
+  brand: string;
+  price: string;
+  image: string;
+  url: string;
+  category: string;
+}
+
+const { name, brand, price, image, url, category } = Astro.props;
+---
+
+<a 
+  href={url} 
+  target="_blank" 
+  rel="noopener noreferrer"
+  class="group block bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg hover:border-gray-200 transition-all duration-300"
+>
+  <div class="aspect-square bg-gray-100 overflow-hidden relative">
+    <img 
+      src={image} 
+      alt={name}
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      loading="lazy"
+      onerror="this.style.display='none'; this.parentElement.classList.add('flex', 'items-center', 'justify-center'); this.parentElement.innerHTML=`<span class='text-4xl'>🛍️</span>`"
+    />
+    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+    <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-xs font-medium text-gray-600 px-2 py-1 rounded-full">
+      {category}
+    </span>
+  </div>
+  
+  <div class="p-4">
+    <p class="text-xs text-gray-400 uppercase tracking-wider mb-1">{brand}</p>
+    <h3 class="font-medium text-gray-900 mb-2 line-clamp-2">{name}</h3>
+    <div class="flex items-center justify-between">
+      <span class="text-rose-600 font-bold">{price}</span>
+      <span class="text-gray-400 group-hover:text-rose-500 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </span>
+    </div>
+  </div>
+</a>
