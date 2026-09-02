@@ -4,6 +4,7 @@ interface Props {
     title: string;
     subtitle: string;
     package: string;
+    packageKey?: string;
     length: string;
     video?: string;
     preview?: string;
@@ -27,6 +28,7 @@ const num = String(index + 1).padStart(2, '0');
   data-y={reel.offsetY}
   data-title={reel.title}
   data-pkg={reel.package}
+  data-pkgkey={reel.packageKey}
   data-len={reel.length}
   data-hero={reel.hero ? '' : undefined}
   data-full={reel.video || undefined}

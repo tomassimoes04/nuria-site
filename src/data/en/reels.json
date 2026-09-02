@@ -11,7 +11,8 @@
       "offsetY": -34,
       "gradientFrom": "var(--mint)",
       "gradientTo": "#e4f4ec",
-      "hero": false
+      "hero": false,
+      "packageKey": "sponsored"
     },
     {
       "title": "SHEIN try-on haul",
@@ -24,7 +25,8 @@
       "offsetY": 0,
       "gradientFrom": "var(--butter)",
       "gradientTo": "var(--blush)",
-      "hero": true
+      "hero": true,
+      "packageKey": "sponsored"
     },
     {
       "title": "Firmoo unboxing",
@@ -37,7 +39,8 @@
       "offsetY": 36,
       "gradientFrom": "var(--lilac)",
       "gradientTo": "#efe7fb",
-      "hero": false
+      "hero": false,
+      "packageKey": "sponsored"
     }
   ],
   "terms": [

@@ -3,8 +3,34 @@
   "headline": "Tens um produto que precisa de ser visto?",
   "subhead": "vamos falar!",
   "packageLabel": "o que procuras",
-  "packages": ["TikTok patrocinado", "GRWM", "Pack UGC", "TikTok + IG", "algo à medida"],
+  "packages": [
+    {
+      "label": "TikTok patrocinado",
+      "key": "sponsored"
+    },
+    {
+      "label": "GRWM",
+      "key": "grwm"
+    },
+    {
+      "label": "Pack UGC",
+      "key": "ugc"
+    },
+    {
+      "label": "TikTok + IG",
+      "key": "bundle"
+    },
+    {
+      "label": "algo à medida",
+      "key": "custom"
+    }
+  ],
   "timelineLabel": "o teu prazo",
-  "timelines": ["o quanto antes", "2 semanas", "próximo mês"],
-  "dmLine": "ou manda-me só uma DM — respondo mais depressa por lá ♡"
+  "timelines": [
+    "o quanto antes",
+    "2 semanas",
+    "próximo mês"
+  ],
+  "dmLine": "ou manda-me só uma DM — respondo mais depressa por lá ♡",
+  "formEndpoint": ""
 }

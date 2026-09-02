@@ -24,7 +24,12 @@ const scriptStrings = {
   add: t('cta.add'),
   added: t('cta.added'),
   tray: t('tray.label'),
-  subject: t('form.subject')
+  subject: t('form.subject'),
+  sending: t('form.sending'),
+  sent: t('form.sent'),
+  error: t('form.error'),
+  needEmail: t('form.needEmail'),
+  endpoint: contact.formEndpoint ?? ''
 };
 
 const { reels, terms } = reelsData;
@@ -61,7 +66,7 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
   <div style="position:relative;width:100%">
 
     <!-- ===== 1 + 2: intro writes itself in, then the reel filmstrip ===== -->
-    <section data-sec="a" style="position:relative;height:250vh">
+    <section data-sec="a" style="position:relative;height:420vh">
       <div style="position:sticky;top:0;height:100vh;overflow:hidden;z-index:1">
 
         <div data-intro style="position:absolute;inset:0;will-change:transform,opacity">
@@ -165,7 +170,7 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
           <div>
             <div style="font:600 25px/1 'Caveat',cursive;color:var(--blush)">{contact.packageLabel}</div>
             <div data-pillgroup="package" style="display:flex;flex-wrap:wrap;gap:9px;margin-top:12px">
-              {contact.packages.map((p: string) => <button type="button" data-pill class="pill" aria-pressed="false">{p}</button>)}
+              {contact.packages.map((p: any) => <button type="button" data-pill data-package={p.key} class="pill" aria-pressed="false">{p.label}</button>)}
             </div>
           </div>
           <div>
@@ -201,6 +206,7 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
             <span data-underline style="position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--butter);transition:width .45s cubic-bezier(.16,1,.3,1)"></span>
           </label>
           <button type="submit" class="send-btn">{t('form.send')}</button>
+          <p data-formstatus role="status" aria-live="polite" style="margin:0;min-height:1.2em;font:500 13px/1.5 'Quicksand',sans-serif;color:var(--butter)"></p>
         </form>
       </div>
       <div style="height:60px"></div>
@@ -290,9 +296,24 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
   /* ---------- proposal tray ---------- */
   const tray = new Set<string>();
   let lastFocused: HTMLElement | null = null;
+  let openReelKey: string | undefined;
 
-  function addToTray(label: string) {
+  /** Reflect an added package in the "what you're after" pills, so the two
+   *  halves of the enquiry cannot disagree with each other. */
+  function selectPackagePill(key?: string) {
+    if (!key) return;
+    const group = q<HTMLElement>('[data-pillgroup="package"]');
+    if (!group) return;
+    const pills = [...group.querySelectorAll<HTMLButtonElement>('[data-pill]')];
+    const match = pills.find((p) => p.dataset.package === key);
+    if (!match) return;
+    pills.forEach((p) => p.setAttribute('aria-pressed', 'false'));
+    match.setAttribute('aria-pressed', 'true');
+  }
+
+  function addToTray(label: string, packageKey?: string) {
     tray.add(label.trim());
+    selectPackagePill(packageKey);
     track('added_to_proposal', { item: label.trim() });
     const t = q<HTMLElement>('[data-traycount]');
     if (t) {
@@ -321,6 +342,7 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
     const ov = el.ov;
     if (!ov) return;
     lastFocused = card;
+    openReelKey = card.dataset.pkgkey;
 
     const set = (sel: string, val?: string) => {
       const n = q<HTMLElement>(sel);
@@ -401,7 +423,7 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
     if (e.target === el.ov || (e.target as HTMLElement).parentElement === el.ov) closeCard();
   });
   q<HTMLElement>('[data-ov-add]')?.addEventListener('click', () => {
-    addToTray(q<HTMLElement>('[data-ov-title]')?.textContent || '');
+    addToTray(q<HTMLElement>('[data-ov-title]')?.textContent || '', openReelKey);
     closeCard();
   });
   document.addEventListener('keydown', (e) => {
@@ -411,7 +433,7 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
   qa<HTMLButtonElement>('[data-pick]').forEach((b) => {
     b.addEventListener('click', () => {
       const tier = b.closest<HTMLElement>('[data-tier]');
-      addToTray(tier?.dataset.tierName || '');
+      addToTray(tier?.dataset.tierName || '', tier?.dataset.tierKey);
       b.textContent = S.added;
       setTimeout(() => {
         b.textContent = S.add;
@@ -450,24 +472,75 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
     return g?.querySelector<HTMLElement>('[data-pill][aria-pressed="true"]')?.textContent?.trim() || '';
   }
 
-  q<HTMLFormElement>('[data-form]')?.addEventListener('submit', (e) => {
+  const form = q<HTMLFormElement>('[data-form]');
+  const statusEl = q<HTMLElement>('[data-formstatus]');
+  const submitBtn = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+  function say(msg: string, tone: 'ok' | 'err' | 'busy' = 'busy') {
+    if (!statusEl) return;
+    statusEl.textContent = msg;
+    statusEl.style.color = tone === 'err' ? 'var(--blush)' : 'var(--butter)';
+  }
+
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const val = (n: string) => q<HTMLInputElement>(`[data-field][name="${n}"]`)?.value.trim() || '';
     const pkg = selectedIn('package');
     const when = selectedIn('timeline');
-    const lines = [
-      val('name') && `Name: ${val('name')}`,
-      val('email') && `Email: ${val('email')}`,
-      val('brand') && `Product / brand: ${val('brand')}`,
-      pkg && `Package: ${pkg}`,
-      when && `Timeline: ${when}`,
-      tray.size && `Proposal tray: ${[...tray].join(', ')}`
-    ].filter(Boolean);
+
+    // without a reply address the enquiry is worthless, so require it
+    if (!val('email')) {
+      say(S.needEmail, 'err');
+      q<HTMLInputElement>('[data-field][name="email"]')?.focus();
+      return;
+    }
+
     track('enquiry_sent', { package: pkg, timeline: when, tray: tray.size });
 
-    const subject = `${S.subject}${val('brand') ? ' — ' + val('brand') : ''}`;
-    window.location.href =
-      `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n') + '\n\n')}`;
+    // No endpoint configured yet: fall back to composing an email. This is the
+    // path that silently does nothing on a machine with no mail client, hence
+    // the visible note pointing at the address.
+    if (!S.endpoint) {
+      const lines = [
+        val('name') && `Name: ${val('name')}`,
+        val('email') && `Email: ${val('email')}`,
+        val('brand') && `Product / brand: ${val('brand')}`,
+        pkg && `Package: ${pkg}`,
+        when && `Timeline: ${when}`,
+        tray.size && `Proposal tray: ${[...tray].join(', ')}`
+      ].filter(Boolean);
+      const subject = `${S.subject}${val('brand') ? ' — ' + val('brand') : ''}`;
+      window.location.href =
+        `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n') + '\n\n')}`;
+      say(S.error + ' ' + EMAIL, 'err');
+      return;
+    }
+
+    say(S.sending);
+    if (submitBtn) submitBtn.disabled = true;
+    try {
+      const res = await fetch(S.endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: val('name'),
+          email: val('email'),
+          brand: val('brand'),
+          package: pkg,
+          timeline: when,
+          proposal: [...tray].join(', '),
+          subject: `${S.subject}${val('brand') ? ' — ' + val('brand') : ''}`
+        })
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      qa<HTMLElement>('[data-underline]').forEach((u) => (u.style.width = '0'));
+      say(S.sent, 'ok');
+    } catch {
+      say(S.error + ' ' + EMAIL, 'err');
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
   });
 
   q<HTMLAnchorElement>('[data-trayreview]')?.addEventListener('click', () => {
@@ -491,9 +564,9 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
       const top = el.secA.offsetTop;
       const span = el.secA.offsetHeight - vh;
       const p = cl((y - top) / span, 0, 1);
-      const pw = cl(p / 0.2, 0, 1); // the name writes itself in
-      const pOut = cl((p - 0.3) / 0.16, 0, 1); // the page turns away
-      const p3r = cl((p - 0.44) / 0.56, 0, 1); // filmstrip pan, finishes at p=1
+      const pw = cl(p / 0.22, 0, 1); // the name writes itself in
+      const pOut = cl((p - 0.36) / 0.18, 0, 1); // holds, then the page turns away
+      const p3r = cl((p - 0.52) / 0.48, 0, 1); // filmstrip pan, finishes at p=1
       const p3 = p3r < 0.5 ? 2 * p3r * p3r : 1 - Math.pow(-2 * p3r + 2, 2) / 2;
 
       if (el.hint) el.hint.style.opacity = String(cl(1 - pw * 4, 0, 1));
