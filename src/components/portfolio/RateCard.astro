@@ -2,6 +2,7 @@
 interface Props {
   tier: {
     name: string;
+    key?: string;
     deliverables: string[];
     description: string;
     accent: string;
@@ -22,6 +23,7 @@ const shadow = tier.featured
 <div
   data-tier
   data-tier-name={tier.name}
+  data-tier-key={tier.key}
   style={`position:relative;display:flex;flex-direction:column;gap:14px;padding:28px;border-radius:22px;background:${surface};box-shadow:${shadow};transform:rotate(${tier.tilt}deg);--tier-border:${tier.border}`}
 >
   {tier.badge && (

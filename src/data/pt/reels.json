@@ -11,7 +11,8 @@
       "offsetY": -34,
       "gradientFrom": "var(--mint)",
       "gradientTo": "#e4f4ec",
-      "hero": false
+      "hero": false,
+      "packageKey": "sponsored"
     },
     {
       "title": "Haul com provas SHEIN",
@@ -24,7 +25,8 @@
       "offsetY": 0,
       "gradientFrom": "var(--butter)",
       "gradientTo": "var(--blush)",
-      "hero": true
+      "hero": true,
+      "packageKey": "sponsored"
     },
     {
       "title": "Unboxing Firmoo",
@@ -37,13 +39,26 @@
       "offsetY": 36,
       "gradientFrom": "var(--lilac)",
       "gradientTo": "#efe7fb",
-      "hero": false
+      "hero": false,
+      "packageKey": "sponsored"
     }
   ],
   "terms": [
-    { "label": "variações de gancho", "value": "2 incluídas" },
-    { "label": "direitos de uso", "value": "orgânico, pago sob pedido" },
-    { "label": "entrega", "value": "5 dias úteis" },
-    { "label": "revisões", "value": "1 ronda" }
+    {
+      "label": "variações de gancho",
+      "value": "2 incluídas"
+    },
+    {
+      "label": "direitos de uso",
+      "value": "orgânico, pago sob pedido"
+    },
+    {
+      "label": "entrega",
+      "value": "5 dias úteis"
+    },
+    {
+      "label": "revisões",
+      "value": "1 ronda"
+    }
   ]
 }

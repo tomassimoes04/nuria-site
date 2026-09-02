@@ -36,6 +36,10 @@ export const ui = {
     'form.brand': 'product / brand',
     'form.send': 'send it →',
     'form.subject': 'Collab enquiry',
+    'form.sending': 'sending…',
+    'form.sent': 'got it — I’ll get back to you soon ♡',
+    'form.error': 'that didn’t send. email me directly at',
+    'form.needEmail': 'add your email so I can reply',
     'lang.switch': 'Ver em português'
   },
   pt: {
@@ -65,6 +69,10 @@ export const ui = {
     'form.brand': 'produto / marca',
     'form.send': 'enviar →',
     'form.subject': 'Pedido de colaboração',
+    'form.sending': 'a enviar…',
+    'form.sent': 'recebido — respondo em breve ♡',
+    'form.error': 'não foi possível enviar. envia-me email para',
+    'form.needEmail': 'adiciona o teu email para eu poder responder',
     'lang.switch': 'View in English'
   }
 } as const;

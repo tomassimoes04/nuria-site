@@ -4,11 +4,26 @@
   "subhead": "let's talk!",
   "packageLabel": "what you're after",
   "packages": [
-    "Sponsored TikTok",
-    "GRWM",
-    "UGC Bundle",
-    "TikTok + IG",
-    "something custom"
+    {
+      "label": "Sponsored TikTok",
+      "key": "sponsored"
+    },
+    {
+      "label": "GRWM",
+      "key": "grwm"
+    },
+    {
+      "label": "UGC Bundle",
+      "key": "ugc"
+    },
+    {
+      "label": "TikTok + IG",
+      "key": "bundle"
+    },
+    {
+      "label": "something custom",
+      "key": "custom"
+    }
   ],
   "timelineLabel": "your timeline",
   "timelines": [
@@ -16,5 +31,6 @@
     "2 weeks",
     "next month"
   ],
-  "dmLine": "or just shoot me a DM — I answer faster there ♡"
+  "dmLine": "or just shoot me a DM — I answer faster there ♡",
+  "formEndpoint": ""
 }

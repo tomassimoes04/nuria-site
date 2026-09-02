@@ -12,7 +12,8 @@
         "1 sponsored video",
         "filmed & edited by me",
         "posted to my TikTok"
-      ]
+      ],
+      "key": "sponsored"
     },
     {
       "name": "GRWM Integration",
@@ -25,7 +26,8 @@
         "woven into a get-ready-with-me",
         "natural product showcase",
         "posted to my TikTok"
-      ]
+      ],
+      "key": "grwm"
     },
     {
       "name": "UGC Bundle",
@@ -38,7 +40,8 @@
         "3 vertical clips",
         "yours to run as ads",
         "no posting on my page"
-      ]
+      ],
+      "key": "ugc"
     },
     {
       "name": "TikTok + Instagram Bundle",
@@ -51,7 +54,8 @@
       "deliverables": [
         "Reel + Story",
         "both platforms, one shoot"
-      ]
+      ],
+      "key": "bundle"
     }
   ]
 }

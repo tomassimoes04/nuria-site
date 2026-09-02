@@ -167,6 +167,7 @@ collections:
               - { label: "Título", name: "title", widget: "string" }
               - { label: "Subtítulo", name: "subtitle", widget: "string" }
               - { label: "Pacote", name: "package", widget: "string" }
+              - { label: "Chave do pacote", name: "packageKey", widget: "select", options: ["sponsored", "grwm", "ugc", "bundle"] }
               - { label: "Duração", name: "length", widget: "string" }
               - { label: "Vídeo (link directo .mp4)", name: "video", widget: "string", required: false }
               - { label: "Poster (imagem)", name: "poster", widget: "image", required: false }
@@ -196,6 +197,7 @@ collections:
             widget: "list"
             fields:
               - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Chave", name: "key", widget: "select", options: ["sponsored", "grwm", "ugc", "bundle"] }
               - { label: "O que inclui", name: "deliverables", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
               - { label: "Descrição", name: "description", widget: "text" }
               - { label: "Cor de destaque", name: "accent", widget: "string" }
@@ -241,10 +243,16 @@ collections:
           - { label: "Título", name: "headline", widget: "string" }
           - { label: "Subtítulo", name: "subhead", widget: "string" }
           - { label: "Etiqueta — pacotes", name: "packageLabel", widget: "string" }
-          - { label: "Pacotes", name: "packages", widget: "list", field: { label: "Opção", name: "option", widget: "string" } }
+          - label: "Pacotes"
+            name: "packages"
+            widget: "list"
+            fields:
+              - { label: "Texto", name: "label", widget: "string" }
+              - { label: "Chave (liga à tabela de pacotes)", name: "key", widget: "select", options: ["sponsored", "grwm", "ugc", "bundle", "custom"] }
           - { label: "Etiqueta — prazos", name: "timelineLabel", widget: "string" }
           - { label: "Prazos", name: "timelines", widget: "list", field: { label: "Opção", name: "option", widget: "string" } }
           - { label: "Linha do DM", name: "dmLine", widget: "string" }
+          - { label: "Endpoint do formulário (vazio = abre o email)", name: "formEndpoint", widget: "string", required: false }
 
   # ---- Media kit — Português (/pt/work-with-me) ----
 
@@ -305,6 +313,7 @@ collections:
               - { label: "Título", name: "title", widget: "string" }
               - { label: "Subtítulo", name: "subtitle", widget: "string" }
               - { label: "Pacote", name: "package", widget: "string" }
+              - { label: "Chave do pacote", name: "packageKey", widget: "select", options: ["sponsored", "grwm", "ugc", "bundle"] }
               - { label: "Duração", name: "length", widget: "string" }
               - { label: "Vídeo (link directo .mp4)", name: "video", widget: "string", required: false }
               - { label: "Poster (imagem)", name: "poster", widget: "image", required: false }
@@ -334,6 +343,7 @@ collections:
             widget: "list"
             fields:
               - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Chave", name: "key", widget: "select", options: ["sponsored", "grwm", "ugc", "bundle"] }
               - { label: "O que inclui", name: "deliverables", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
               - { label: "Descrição", name: "description", widget: "text" }
               - { label: "Cor de destaque", name: "accent", widget: "string" }
@@ -379,7 +389,13 @@ collections:
           - { label: "Título", name: "headline", widget: "string" }
           - { label: "Subtítulo", name: "subhead", widget: "string" }
           - { label: "Etiqueta — pacotes", name: "packageLabel", widget: "string" }
-          - { label: "Pacotes", name: "packages", widget: "list", field: { label: "Opção", name: "option", widget: "string" } }
+          - label: "Pacotes"
+            name: "packages"
+            widget: "list"
+            fields:
+              - { label: "Texto", name: "label", widget: "string" }
+              - { label: "Chave (liga à tabela de pacotes)", name: "key", widget: "select", options: ["sponsored", "grwm", "ugc", "bundle", "custom"] }
           - { label: "Etiqueta — prazos", name: "timelineLabel", widget: "string" }
           - { label: "Prazos", name: "timelines", widget: "list", field: { label: "Opção", name: "option", widget: "string" } }
           - { label: "Linha do DM", name: "dmLine", widget: "string" }
+          - { label: "Endpoint do formulário (vazio = abre o email)", name: "formEndpoint", widget: "string", required: false }
