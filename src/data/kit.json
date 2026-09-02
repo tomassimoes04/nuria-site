@@ -29,26 +29,26 @@
   "instagramHandle": "@nuriac._.28",
   "stats": {
     "heading": "the numbers",
-    "note": "",
+    "note": "TikTok analytics · 3 Jul – 31 Aug 2026 · 16.4K likes · 1.8K shares",
     "items": [
       {
-        "label": "average views per video",
-        "value": "",
+        "label": "post views, last 60 days",
+        "value": "278.3K",
         "accent": "blush"
       },
       {
-        "label": "engagement rate",
-        "value": "",
+        "label": "top-performing video",
+        "value": "91K",
         "accent": "mint"
       },
       {
-        "label": "audience",
-        "value": "",
+        "label": "women · 79% aged 18–34",
+        "value": "77%",
         "accent": "lilac"
       },
       {
-        "label": "followers",
-        "value": "",
+        "label": "of viewers in Portugal",
+        "value": "95.9%",
         "accent": "butter"
       }
     ]
