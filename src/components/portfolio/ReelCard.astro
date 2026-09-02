@@ -6,6 +6,7 @@ interface Props {
     package: string;
     length: string;
     video?: string;
+    preview?: string;
     poster?: string;
     offsetY: number;
     gradientFrom: string;
@@ -27,6 +28,7 @@ const num = String(index + 1).padStart(2, '0');
   data-pkg={reel.package}
   data-len={reel.length}
   data-hero={reel.hero ? '' : undefined}
+  data-full={reel.video || undefined}
   class={reel.hero ? 'reel-card reel-card--hero' : 'reel-card'}
   role="button"
   tabindex="0"
@@ -42,7 +44,7 @@ const num = String(index + 1).padStart(2, '0');
       playsinline
       preload="metadata"
       poster={reel.poster || undefined}
-      src={reel.video || undefined}
+      src={reel.preview || reel.video || undefined}
       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:5px;display:none"
     ></video>
     <span data-vidph style="font:500 11px/1.4 'Quicksand',sans-serif;color:rgba(74,51,64,.55)">[ reel 9:16 ]</span>

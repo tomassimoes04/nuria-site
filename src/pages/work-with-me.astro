@@ -306,7 +306,7 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
     const ovv = q<HTMLVideoElement>('[data-ov-vid]');
     const ovph = q<HTMLElement>('[data-ov-ph]');
     const scrub = q<HTMLElement>('[data-ov-scrub]');
-    const src = el.cards[i]?.querySelector<HTMLVideoElement>('[data-vid]')?.getAttribute('src') || '';
+    const src = card.dataset.full || '';
     if (ovv) {
       if (src) {
         if (ovv.src !== src) ovv.src = src;
@@ -545,5 +545,11 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
   }
 
   syncVideos();
+  // A page opened in a background tab has its autoplay suppressed, so the
+  // cards would sit frozen on their posters. Retry once it is visible.
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) syncVideos();
+  });
+
   requestAnimationFrame(loop);
 </script>
