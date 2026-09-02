@@ -1,7 +1,21 @@
 {
   "name": "Núria",
-  "tagline": "Content Creator & Lifestyle",
-  "bio": "Olá! Sou a Núria 👋 Partilho o meu dia-a-dia, coisas relacionadas com pokemon e os melhores achados. Aqui encontras todos os meus descontos exclusivos e produtos favoritos!",
+  "surname": "Chaves",
+  "greeting": "hi hi, I'm",
+  "tagline": "UGC & short-form video creator",
+  "bio": "I make soft, scroll-stopping short-form video for brands I actually love. Hooks first, always.",
   "profileImage": "/images/whatsapp-image-2026-01-03-at-22.37.18.jpeg",
-  "email": "nuriachaves.collabs@gmail.com"
+  "photoCaption": "me <3",
+  "email": "nuriachaves.collabs@gmail.com",
+  "availability": "booking for next week",
+  "stickerText": "content\nthat sells ♡",
+  "skills": [
+    { "label": "UGC", "color": "blush" },
+    { "label": "short form", "color": "mint" },
+    { "label": "paid social", "color": "lilac" }
+  ],
+  "tiktok": "https://www.tiktok.com/@nuria._.28",
+  "tiktokHandle": "@nuria._.28",
+  "instagram": "https://www.instagram.com/nuriac._.28",
+  "instagramHandle": "@nuriac._.28"
 }

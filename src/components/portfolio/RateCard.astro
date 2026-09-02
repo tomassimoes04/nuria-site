@@ -1,0 +1,35 @@
+---
+interface Props {
+  tier: {
+    name: string;
+    price: string;
+    description: string;
+    accent: string;
+    border: string;
+    tilt: number;
+    featured?: boolean;
+    badge?: string;
+  };
+}
+
+const { tier } = Astro.props;
+const surface = tier.featured ? 'var(--blush)' : '#fffaf9';
+const shadow = tier.featured
+  ? '0 26px 52px -26px rgba(224,112,143,.6)'
+  : '0 22px 44px -26px rgba(74,51,64,.45)';
+---
+
+<div
+  data-tier
+  data-tier-name={tier.name}
+  style={`position:relative;display:flex;flex-direction:column;gap:14px;padding:28px;border-radius:22px;background:${surface};box-shadow:${shadow};transform:rotate(${tier.tilt}deg);--tier-border:${tier.border}`}
+>
+  {tier.badge && (
+    <div style="position:absolute;top:-15px;right:-12px;padding:8px 14px;border-radius:99px;background:var(--rose);color:#fffaf9;font:600 18px/1 'Caveat',cursive;transform:rotate(7deg);animation:sway 6s ease-in-out infinite">{tier.badge}</div>
+  )}
+  <div style="font:600 25px/1.1 'Caveat',cursive">{tier.name}</div>
+  <div style={`font:italic 400 44px/1 'DM Serif Display',serif;color:${tier.accent}`}>{tier.price}</div>
+  <div style={`border-top:1.5px dotted rgba(74,51,64,${tier.featured ? '.3' : '.25'})`}></div>
+  <p style="margin:0;font:500 13.5px/1.6 'Quicksand',sans-serif;color:rgba(74,51,64,.72)">{tier.description}</p>
+  <button data-pick class={tier.featured ? 'tier-btn tier-btn--solid' : 'tier-btn'}>add to proposal</button>
+</div>

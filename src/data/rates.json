@@ -1,0 +1,42 @@
+{
+  "note": "all prices in euro · ask me about custom bundles",
+  "tiers": [
+    {
+      "name": "Sponsored TikTok Video",
+      "price": "€180",
+      "description": "One sponsored video, filmed and edited by me, posted to my TikTok.",
+      "accent": "var(--rose)",
+      "border": "var(--blush)",
+      "tilt": -0.6,
+      "featured": false
+    },
+    {
+      "name": "GRWM Integration",
+      "price": "€200",
+      "description": "Perfect for natural tech showcasing — woven into a get-ready-with-me.",
+      "accent": "var(--lilac)",
+      "border": "var(--lilac)",
+      "tilt": 0.4,
+      "featured": false
+    },
+    {
+      "name": "UGC Bundle",
+      "price": "€250",
+      "description": "3 vertical clips for paid use — yours to run as ads, no posting on my page.",
+      "accent": "var(--mint)",
+      "border": "var(--mint)",
+      "tilt": -0.4,
+      "featured": false
+    },
+    {
+      "name": "TikTok + Instagram Bundle",
+      "price": "€280",
+      "description": "Reel + Story — the same product across both platforms in one shoot.",
+      "accent": "var(--ink)",
+      "border": "var(--ink)",
+      "tilt": 0.7,
+      "featured": true,
+      "badge": "best value ♡"
+    }
+  ]
+}
