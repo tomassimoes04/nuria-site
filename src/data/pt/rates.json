@@ -1,0 +1,42 @@
+{
+  "note": "cada projecto é orçamentado individualmente · diz-me o que precisas",
+  "tiers": [
+    {
+      "name": "Vídeo TikTok patrocinado",
+      "deliverables": ["1 vídeo patrocinado", "filmado e editado por mim", "publicado no meu TikTok"],
+      "description": "Um vídeo patrocinado, filmado e editado por mim, publicado no meu TikTok.",
+      "accent": "var(--rose)",
+      "border": "var(--blush)",
+      "tilt": -0.6,
+      "featured": false
+    },
+    {
+      "name": "Integração GRWM",
+      "deliverables": ["integrado num get-ready-with-me", "mostra natural do produto", "publicado no meu TikTok"],
+      "description": "Ideal para mostrar o produto de forma natural — integrado num get-ready-with-me.",
+      "accent": "var(--lilac)",
+      "border": "var(--lilac)",
+      "tilt": 0.4,
+      "featured": false
+    },
+    {
+      "name": "Pack UGC",
+      "deliverables": ["3 clipes verticais", "teus para usares em anúncios", "sem publicação na minha página"],
+      "description": "3 clipes verticais para uso pago — teus para usares como anúncios, sem publicação na minha página.",
+      "accent": "var(--mint)",
+      "border": "var(--mint)",
+      "tilt": -0.4,
+      "featured": false
+    },
+    {
+      "name": "Pack TikTok + Instagram",
+      "deliverables": ["Reel + Story", "as duas plataformas, uma filmagem"],
+      "description": "Reel + Story — o mesmo produto nas duas plataformas, numa só filmagem.",
+      "accent": "var(--ink)",
+      "border": "var(--ink)",
+      "tilt": 0.7,
+      "featured": true,
+      "badge": "melhor valor ♡"
+    }
+  ]
+}

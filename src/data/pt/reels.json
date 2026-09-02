@@ -1,0 +1,49 @@
+{
+  "reels": [
+    {
+      "title": "Rotina de skincare YesStyle",
+      "subtitle": "K-beauty, passo a passo",
+      "package": "Vídeo TikTok patrocinado",
+      "length": "0:22",
+      "video": "/videos/yesstyle-skincare.mp4",
+      "preview": "/videos/yesstyle-skincare-preview.mp4",
+      "poster": "/videos/yesstyle-skincare.jpg",
+      "offsetY": -34,
+      "gradientFrom": "var(--mint)",
+      "gradientTo": "#e4f4ec",
+      "hero": false
+    },
+    {
+      "title": "Haul com provas SHEIN",
+      "subtitle": "moda, filmado em casa",
+      "package": "Vídeo TikTok patrocinado",
+      "length": "0:25",
+      "video": "/videos/shein-haul.mp4",
+      "preview": "/videos/shein-haul-preview.mp4",
+      "poster": "/videos/shein-haul.jpg",
+      "offsetY": 0,
+      "gradientFrom": "var(--butter)",
+      "gradientTo": "var(--blush)",
+      "hero": true
+    },
+    {
+      "title": "Unboxing Firmoo",
+      "subtitle": "óculos, primeira olhada",
+      "package": "Vídeo TikTok patrocinado",
+      "length": "0:33",
+      "video": "/videos/firmoo-unboxing.mp4",
+      "preview": "/videos/firmoo-unboxing-preview.mp4",
+      "poster": "/videos/firmoo-unboxing.jpg",
+      "offsetY": 36,
+      "gradientFrom": "var(--lilac)",
+      "gradientTo": "#efe7fb",
+      "hero": false
+    }
+  ],
+  "terms": [
+    { "label": "variações de gancho", "value": "2 incluídas" },
+    { "label": "direitos de uso", "value": "orgânico, pago sob pedido" },
+    { "label": "entrega", "value": "5 dias úteis" },
+    { "label": "revisões", "value": "1 ronda" }
+  ]
+}

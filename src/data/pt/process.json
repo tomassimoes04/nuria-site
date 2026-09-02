@@ -1,0 +1,30 @@
+{
+  "clients": ["SHEIN", "L'Oréal", "YesStyle", "Firmoo"],
+  "heading": "como é trabalhar comigo",
+  "steps": [
+    {
+      "title": "envias-me o briefing",
+      "body": "Produto, público, a oferta. Volto com ângulos de gancho antes de se filmar seja o que for.",
+      "kicker": "sem adivinhar ♡",
+      "background": "#fffaf9",
+      "badge": "var(--blush)",
+      "dir": -1
+    },
+    {
+      "title": "filmo e edito",
+      "body": "Filmado em casa ou no local, luz natural suave, equipamento meu. Legendas e som incluídos.",
+      "kicker": "tratado por mim",
+      "background": "var(--lilac)",
+      "badge": "#fffaf9",
+      "dir": 1
+    },
+    {
+      "title": "recebes os ficheiros",
+      "body": "Verticais prontos a publicar mais b-roll em bruto, uma ronda de revisões, entregue em menos de uma semana.",
+      "kicker": "publica →",
+      "background": "#fffaf9",
+      "badge": "var(--mint)",
+      "dir": -1
+    }
+  ]
+}

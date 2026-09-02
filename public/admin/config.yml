@@ -108,15 +108,15 @@ collections:
               - { label: "Ícone", name: "icon", widget: "select", options: ["tiktok", "instagram", "youtube", "pinterest", "twitter", "facebook", "linkedin"] }
               - { label: "Seguidores", name: "followers", widget: "string", hint: "Ex: 50K" }
 
-  # ---- Media kit (/work-with-me) ----
+  # ---- Media kit — English (/work-with-me) ----
 
   # Perfil do media kit
-  - name: "kit"
-    label: "💼 Media kit — perfil"
+  - name: "kit-en"
+    label: "🇬🇧 Media kit (EN) — perfil"
     files:
-      - name: "kit"
+      - name: "kit-en"
         label: "Intro do media kit"
-        file: "src/data/kit.json"
+        file: "src/data/en/kit.json"
         fields:
           - { label: "Nome próprio", name: "name", widget: "string" }
           - { label: "Apelido", name: "surname", widget: "string" }
@@ -153,12 +153,12 @@ collections:
           - { label: "Username Instagram", name: "instagramHandle", widget: "string" }
 
   # Reels
-  - name: "reels"
-    label: "🎬 Media kit — reels"
+  - name: "reels-en"
+    label: "🇬🇧 Media kit (EN) — reels"
     files:
-      - name: "reels"
+      - name: "reels-en"
         label: "Reels e cartão de preços"
-        file: "src/data/reels.json"
+        file: "src/data/en/reels.json"
         fields:
           - label: "Reels"
             name: "reels"
@@ -183,12 +183,12 @@ collections:
               - { label: "Valor", name: "value", widget: "string" }
 
   # Preços
-  - name: "rates"
-    label: "💶 Media kit — preços"
+  - name: "rates-en"
+    label: "🇬🇧 Media kit (EN) — preços"
     files:
-      - name: "rates"
+      - name: "rates-en"
         label: "Tabela de preços"
-        file: "src/data/rates.json"
+        file: "src/data/en/rates.json"
         fields:
           - { label: "Nota", name: "note", widget: "string" }
           - label: "Pacotes"
@@ -205,12 +205,12 @@ collections:
               - { label: "Selo", name: "badge", widget: "string", required: false }
 
   # Processo
-  - name: "process"
-    label: "✨ Media kit — como funciona"
+  - name: "process-en"
+    label: "🇬🇧 Media kit (EN) — como funciona"
     files:
-      - name: "process"
+      - name: "process-en"
         label: "Processo e clientes"
-        file: "src/data/process.json"
+        file: "src/data/en/process.json"
         fields:
           - label: "Clientes (vazio esconde a faixa)"
             name: "clients"
@@ -230,12 +230,150 @@ collections:
               - { label: "Direcção da animação (-1 ou 1)", name: "dir", widget: "number", value_type: "int" }
 
   # Contacto
-  - name: "contact"
-    label: "💌 Media kit — contacto"
+  - name: "contact-en"
+    label: "🇬🇧 Media kit (EN) — contacto"
     files:
-      - name: "contact"
+      - name: "contact-en"
         label: "Secção de contacto"
-        file: "src/data/contact.json"
+        file: "src/data/en/contact.json"
+        fields:
+          - { label: "Kicker", name: "kicker", widget: "string" }
+          - { label: "Título", name: "headline", widget: "string" }
+          - { label: "Subtítulo", name: "subhead", widget: "string" }
+          - { label: "Etiqueta — pacotes", name: "packageLabel", widget: "string" }
+          - { label: "Pacotes", name: "packages", widget: "list", field: { label: "Opção", name: "option", widget: "string" } }
+          - { label: "Etiqueta — prazos", name: "timelineLabel", widget: "string" }
+          - { label: "Prazos", name: "timelines", widget: "list", field: { label: "Opção", name: "option", widget: "string" } }
+          - { label: "Linha do DM", name: "dmLine", widget: "string" }
+
+  # ---- Media kit — Português (/pt/work-with-me) ----
+
+  # Perfil do media kit
+  - name: "kit-pt"
+    label: "🇵🇹 Media kit (PT) — perfil"
+    files:
+      - name: "kit-pt"
+        label: "Intro do media kit"
+        file: "src/data/pt/kit.json"
+        fields:
+          - { label: "Nome próprio", name: "name", widget: "string" }
+          - { label: "Apelido", name: "surname", widget: "string" }
+          - { label: "Saudação", name: "greeting", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Bio (inglês, para marcas)", name: "bio", widget: "text" }
+          - { label: "Foto", name: "profileImage", widget: "image" }
+          - { label: "Legenda da polaroid", name: "photoCaption", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Disponibilidade", name: "availability", widget: "string" }
+          - { label: "Texto do autocolante", name: "stickerText", widget: "text" }
+          - label: "Etiquetas"
+            name: "skills"
+            widget: "list"
+            fields:
+              - { label: "Texto", name: "label", widget: "string" }
+              - { label: "Cor", name: "color", widget: "select", options: ["blush", "mint", "lilac", "butter"] }
+          - label: "Números do TikTok (deixa os valores vazios para esconder a secção)"
+            name: "stats"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "heading", widget: "string" }
+              - { label: "Nota (ex: actualizado em Setembro 2026)", name: "note", widget: "string", required: false }
+              - label: "Métricas"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Etiqueta", name: "label", widget: "string" }
+                  - { label: "Valor (vazio = escondido)", name: "value", widget: "string", required: false }
+                  - { label: "Cor", name: "accent", widget: "select", options: ["blush", "mint", "lilac", "butter", "rose"] }
+          - { label: "URL TikTok", name: "tiktok", widget: "string" }
+          - { label: "Username TikTok", name: "tiktokHandle", widget: "string" }
+          - { label: "URL Instagram", name: "instagram", widget: "string" }
+          - { label: "Username Instagram", name: "instagramHandle", widget: "string" }
+
+  # Reels
+  - name: "reels-pt"
+    label: "🇵🇹 Media kit (PT) — reels"
+    files:
+      - name: "reels-pt"
+        label: "Reels e cartão de preços"
+        file: "src/data/pt/reels.json"
+        fields:
+          - label: "Reels"
+            name: "reels"
+            widget: "list"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Subtítulo", name: "subtitle", widget: "string" }
+              - { label: "Pacote", name: "package", widget: "string" }
+              - { label: "Duração", name: "length", widget: "string" }
+              - { label: "Vídeo (link directo .mp4)", name: "video", widget: "string", required: false }
+              - { label: "Poster (imagem)", name: "poster", widget: "image", required: false }
+              - { label: "Deslocamento vertical", name: "offsetY", widget: "number", value_type: "int" }
+              - { label: "Gradiente — início", name: "gradientFrom", widget: "string" }
+              - { label: "Gradiente — fim", name: "gradientTo", widget: "string" }
+              - { label: "Card em destaque (só um)", name: "hero", widget: "boolean", default: false }
+              - { label: "Selo", name: "badge", widget: "string", required: false }
+          - label: "Condições (cartão de preços)"
+            name: "terms"
+            widget: "list"
+            fields:
+              - { label: "Campo", name: "label", widget: "string" }
+              - { label: "Valor", name: "value", widget: "string" }
+
+  # Preços
+  - name: "rates-pt"
+    label: "🇵🇹 Media kit (PT) — preços"
+    files:
+      - name: "rates-pt"
+        label: "Tabela de preços"
+        file: "src/data/pt/rates.json"
+        fields:
+          - { label: "Nota", name: "note", widget: "string" }
+          - label: "Pacotes"
+            name: "tiers"
+            widget: "list"
+            fields:
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "O que inclui", name: "deliverables", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
+              - { label: "Descrição", name: "description", widget: "text" }
+              - { label: "Cor de destaque", name: "accent", widget: "string" }
+              - { label: "Cor do contorno", name: "border", widget: "string" }
+              - { label: "Inclinação (graus)", name: "tilt", widget: "number", value_type: "float" }
+              - { label: "Destacado", name: "featured", widget: "boolean", default: false }
+              - { label: "Selo", name: "badge", widget: "string", required: false }
+
+  # Processo
+  - name: "process-pt"
+    label: "🇵🇹 Media kit (PT) — como funciona"
+    files:
+      - name: "process-pt"
+        label: "Processo e clientes"
+        file: "src/data/pt/process.json"
+        fields:
+          - label: "Clientes (vazio esconde a faixa)"
+            name: "clients"
+            widget: "list"
+            required: false
+            field: { label: "Nome", name: "name", widget: "string" }
+          - { label: "Título da secção", name: "heading", widget: "string" }
+          - label: "Passos"
+            name: "steps"
+            widget: "list"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Texto", name: "body", widget: "text" }
+              - { label: "Frase final", name: "kicker", widget: "string" }
+              - { label: "Cor de fundo", name: "background", widget: "string" }
+              - { label: "Cor do número", name: "badge", widget: "string" }
+              - { label: "Direcção da animação (-1 ou 1)", name: "dir", widget: "number", value_type: "int" }
+
+  # Contacto
+  - name: "contact-pt"
+    label: "🇵🇹 Media kit (PT) — contacto"
+    files:
+      - name: "contact-pt"
+        label: "Secção de contacto"
+        file: "src/data/pt/contact.json"
         fields:
           - { label: "Kicker", name: "kicker", widget: "string" }
           - { label: "Título", name: "headline", widget: "string" }

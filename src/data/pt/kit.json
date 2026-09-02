@@ -1,0 +1,31 @@
+{
+  "name": "Núria",
+  "surname": "Chaves",
+  "greeting": "olá, olá, eu sou a",
+  "tagline": "criadora de UGC e vídeo curto",
+  "bio": "Faço vídeo curto, suave e impossível de ignorar, para marcas de que gosto mesmo. Primeiro o gancho, sempre.",
+  "profileImage": "/images/whatsapp-image-2026-01-03-at-22.37.18.jpeg",
+  "photoCaption": "eu <3",
+  "email": "nuriachaves.collabs@gmail.com",
+  "availability": "a aceitar projectos para a próxima semana",
+  "stickerText": "conteúdo\nque vende ♡",
+  "skills": [
+    { "label": "UGC", "color": "blush" },
+    { "label": "vídeo curto", "color": "mint" },
+    { "label": "social pago", "color": "lilac" }
+  ],
+  "tiktok": "https://www.tiktok.com/@nuria._.28",
+  "tiktokHandle": "@nuria._.28",
+  "instagram": "https://www.instagram.com/nuriac._.28",
+  "instagramHandle": "@nuriac._.28",
+  "stats": {
+    "heading": "os números",
+    "note": "Analytics do TikTok · 3 jul – 31 ago 2026 · 16,4 mil gostos · 1,8 mil partilhas",
+    "items": [
+      { "label": "visualizações, últimos 60 dias", "value": "278,3 mil", "accent": "blush" },
+      { "label": "vídeo com melhor desempenho", "value": "91 mil", "accent": "mint" },
+      { "label": "mulheres · 79% entre 18–34", "value": "77%", "accent": "lilac" },
+      { "label": "dos espectadores em Portugal", "value": "95,9%", "accent": "butter" }
+    ]
+  }
+}
