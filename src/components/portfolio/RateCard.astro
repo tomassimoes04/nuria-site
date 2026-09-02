@@ -2,7 +2,7 @@
 interface Props {
   tier: {
     name: string;
-    price: string;
+    deliverables: string[];
     description: string;
     accent: string;
     border: string;
@@ -28,7 +28,14 @@ const shadow = tier.featured
     <div style="position:absolute;top:-15px;right:-12px;padding:8px 14px;border-radius:99px;background:var(--rose);color:#fffaf9;font:600 18px/1 'Caveat',cursive;transform:rotate(7deg);animation:sway 6s ease-in-out infinite">{tier.badge}</div>
   )}
   <div style="font:600 25px/1.1 'Caveat',cursive">{tier.name}</div>
-  <div style={`font:italic 400 44px/1 'DM Serif Display',serif;color:${tier.accent}`}>{tier.price}</div>
+  <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px">
+    {tier.deliverables.map((d) => (
+      <li style="display:flex;align-items:flex-start;gap:9px;font:500 13.5px/1.5 'Quicksand',sans-serif">
+        <span style={`flex:none;width:7px;height:7px;margin-top:5px;border-radius:99px;background:${tier.accent}`}></span>
+        {d}
+      </li>
+    ))}
+  </ul>
   <div style={`border-top:1.5px dotted rgba(74,51,64,${tier.featured ? '.3' : '.25'})`}></div>
   <p style="margin:0;font:500 13.5px/1.6 'Quicksand',sans-serif;color:rgba(74,51,64,.72)">{tier.description}</p>
   <button data-pick class={tier.featured ? 'tier-btn tier-btn--solid' : 'tier-btn'}>add to proposal</button>

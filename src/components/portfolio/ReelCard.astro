@@ -3,7 +3,6 @@ interface Props {
   reel: {
     title: string;
     subtitle: string;
-    price: string;
     package: string;
     length: string;
     video?: string;
@@ -25,14 +24,13 @@ const num = String(index + 1).padStart(2, '0');
   data-card
   data-y={reel.offsetY}
   data-title={reel.title}
-  data-price={reel.price}
   data-pkg={reel.package}
   data-len={reel.length}
   data-hero={reel.hero ? '' : undefined}
   class={reel.hero ? 'reel-card reel-card--hero' : 'reel-card'}
   role="button"
   tabindex="0"
-  aria-label={`${reel.title} — ${reel.price}, open rate card`}
+  aria-label={`${reel.title} — open rate card`}
 >
   <div
     style={`position:relative;width:100%;aspect-ratio:9/16;border-radius:5px;background:linear-gradient(160deg,${reel.gradientFrom},${reel.gradientTo});display:flex;align-items:center;justify-content:center`}

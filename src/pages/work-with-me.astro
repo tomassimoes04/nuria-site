@@ -120,7 +120,7 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
     <section data-sec="c" id="rates" style="position:relative;z-index:2;padding:110px 6vw 130px">
       <div data-glow style="position:absolute;left:50%;top:0;width:min(820px,90vw);height:460px;transform:translate(-50%,0);pointer-events:none;background:radial-gradient(50% 50% at 50% 50%,rgba(248,204,215,.75),transparent 70%)"></div>
       <div style="position:relative;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px">
-        <div style="display:inline-block;padding:8px 20px;border-radius:99px;background:var(--butter);transform:rotate(1.2deg);font:italic 400 clamp(28px,3.6vw,52px)/1.1 'DM Serif Display',serif">the rates</div>
+        <div style="display:inline-block;padding:8px 20px;border-radius:99px;background:var(--butter);transform:rotate(1.2deg);font:italic 400 clamp(28px,3.6vw,52px)/1.1 'DM Serif Display',serif">the packages</div>
         <span style="font:500 12px/1.6 'Quicksand',sans-serif;color:rgba(74,51,64,.55)">{ratesData.note}</span>
       </div>
 
@@ -220,10 +220,10 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
           ))}
         </div>
         <div style="border-top:1.5px dotted rgba(74,51,64,.25);margin:22px 0"></div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:14px">
-          <div>
-            <div style="font:600 19px/1 'Caveat',cursive;color:rgba(74,51,64,.6)">estimate</div>
-            <div data-ov-price style="font:italic 400 38px/1 'DM Serif Display',serif;margin-top:6px">{reels[2].price}</div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap">
+          <div style="max-width:20ch">
+            <div style="font:600 19px/1 'Caveat',cursive;color:rgba(74,51,64,.6)">quoted per project</div>
+            <div style="margin-top:6px;font:500 12px/1.5 'Quicksand',sans-serif;color:rgba(74,51,64,.6)">add it and tell me about the brief</div>
           </div>
           <button type="button" data-ov-add class="ov-add">add to proposal</button>
         </div>
@@ -300,7 +300,6 @@ const marquee = clients.length ? clients.join(' ♡ ') + ' ♡ ' : '';
       if (n && val) n.textContent = val;
     };
     set('[data-ov-title]', card.dataset.title);
-    set('[data-ov-price]', card.dataset.price);
     set('[data-ov-len]', card.dataset.len);
     set('[data-ov-pkg]', card.dataset.pkg);
 

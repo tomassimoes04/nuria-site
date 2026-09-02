@@ -166,7 +166,6 @@ collections:
             fields:
               - { label: "Título", name: "title", widget: "string" }
               - { label: "Subtítulo", name: "subtitle", widget: "string" }
-              - { label: "Preço", name: "price", widget: "string" }
               - { label: "Pacote", name: "package", widget: "string" }
               - { label: "Duração", name: "length", widget: "string" }
               - { label: "Vídeo (link directo .mp4)", name: "video", widget: "string", required: false }
@@ -197,9 +196,9 @@ collections:
             widget: "list"
             fields:
               - { label: "Nome", name: "name", widget: "string" }
-              - { label: "Preço", name: "price", widget: "string" }
+              - { label: "O que inclui", name: "deliverables", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
               - { label: "Descrição", name: "description", widget: "text" }
-              - { label: "Cor do preço", name: "accent", widget: "string" }
+              - { label: "Cor de destaque", name: "accent", widget: "string" }
               - { label: "Cor do contorno", name: "border", widget: "string" }
               - { label: "Inclinação (graus)", name: "tilt", widget: "number", value_type: "float" }
               - { label: "Destacado", name: "featured", widget: "boolean", default: false }
